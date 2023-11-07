@@ -44,9 +44,19 @@ const App = () => {
     setArmy(armyBots);
   }
 
+  function deleteBots(id) {
+    fetch('http://localhost:8001/bots/' + id, {
+      method: 'DELETE',
+    });
+  }
+
   return (
     <div>
-      <BotArmy army={army} removeFromArmy={removeFromArmy} />
+      <BotArmy
+        army={army}
+        removeFromArmy={removeFromArmy}
+        deleteBots={deleteBots}
+      />
       <ViewBot doc={viewBot} removeViewBot={removeViewBot} Enlist={Enlist} />
       <BotCollection data={data} handleAddViewBot={handleAddViewBot} />
     </div>
